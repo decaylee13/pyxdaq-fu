@@ -54,13 +54,18 @@ def run_diagnosis(console: Console):
             yield ('info_parse_error', str(e))
 
     try:
-        from pylibxdaq.managers import manager_paths
+        try:
+            # pylibxdaq <=0.4.1
+            from pylibxdaq.managers import manager_paths as _manager_paths
+        except ImportError:
+            # pylibxdaq >=0.4.2
+            from pylibxdaq.managers import DeviceManagerPaths as _manager_paths
         results['Device Managers'] = {
             str(manager_path): {
                 k: r
                 for k, r in try_load_device_manager(manager_path)
             }
-            for manager_path in manager_paths
+            for manager_path in _manager_paths
         }
         names = [i.get('name') for i in results['Device Managers'].values() if 'name' in i]
         missing = []
