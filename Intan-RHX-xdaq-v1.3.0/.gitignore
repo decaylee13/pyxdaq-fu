@@ -1,0 +1,12 @@
+# IDE, Editor
+/*.pro.user*
+/.vscode
+
+# OS
+.DS_Store
+
+# Build
+/build*
+/.venv
+/.cache
+/CMakeUserPresets.json

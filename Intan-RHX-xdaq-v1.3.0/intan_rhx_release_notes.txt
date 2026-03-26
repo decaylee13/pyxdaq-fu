@@ -1,0 +1,126 @@
+Intan RHX release notes
+-----------------------
+
+* Version 3.0, 11 February 2021
+- First release; started with v3.0 to avoid confusion with older Intan software.
+
+* Version 3.0.1, 12 February 2021
+- Fixed bug that caused crash during electrode impedance measurement.
+
+* Version 3.0.2, 24 March 2021
+- Improvements to Spike Scope:
+   - Added RMS display, consistent with old software.
+   - Added spike rate display.
+   - Number of spikes in recent spike history can now be as high as 500.
+   - Each channel's recent spike history is persistent when channels are changed.
+   - Added 'Take Snapshot' and 'Clear Snapshot' buttons to permit freezing spike history in background of display on a per-channel basis.
+- Added longer post-trigger spans to PSTH tool: 5s, 10s, and 20s.
+- Added ability to use analog inputs as digital triggers in PSTH tool.
+- Added ability to use analog inputs as digital triggers in Display Trigger (in Trigger tab).
+- Added ability to display thresholded analog inputs as digital signals in Spectrogram Tool.
+- In data file playback mode, added 'run immediately' option after 'jump to position'.
+- Extended range of y-axis spacing between waveforms on waveform display.
+- Fixed bug where 'Stop' button was not working during rewinding.
+- Fixed bug where the 'Automatically Save Trigger Channel' option in triggered recording was not working.
+- Fixed issue where software crashed upon exiting on some Macs.
+- Fixed crashing upon software startup with some smaller screens.
+- Improvements to TCP output:
+   - Added ability to disable and enable individual channels for TCP output while system is running.
+   - Improved TCP parser so that path names and file names may include spaces.
+   - Fixed TCP output timestamps to match timestamps in recorded data.
+   - Fixed issue where TCP data output could fill up software 'Waveform FIFO' buffer under certain conditions.
+   - Changed TCP parameter name 'DisplayTriggerAnalogVoltageThresholdVolts' to 'TriggerAnalogVoltageThresholdVolts'.
+- Switched to latest version (v5.2.3) of Opal Kelly DLL.
+- Changes to support Linux compilation.
+- Windows installer:
+   - Fixed issue where certain anti-virus programs would interfere with Windows installation.
+   - Added additonal DLLs to Windows installation:
+       api-ms-win-core-winrt-string-l1-1-0.dll
+       api-ms-win-core-winrt-l1-1-0.dll
+       OpenCL.dll
+
+* Version 3.0.3, 15 April 2021
+- Added 50 ms option to PSTH pre-trigger and post-trigger spans.
+- In "One File Per Signal Type" data file format, added option to save auxiliary inputs (e.g., acccelerometer data) in amplifier.dat file.
+- Fixed bug that sometimes causes crashing when PC audio was enabled.
+- Fixed bug that did not display auxiliary inputs or supply voltages from second headstage when dual headstage adapter was used.
+- Expanded OpenCL compatibility to fix problems with OpenCL initialization on some systems.
+
+* Version 3.0.4, 5 August 2021
+- Fixed small memory leak that occurred when saving in the File Per Signal Type file format.
+- Improved XML settings file parsing so that files that don't include any headstage channels can still be correctly loaded.
+- Minor improvement to make error logging more detailed and efficient.
+- Modify episodic triggered recording algorithm to ignore brief trigger-off events.
+- Improved optimum SPI delay finding algorithm so that setting delay manually is less likely to be necessary.
+- In data file playback mode, electrode impedances are now displayed.
+- Fixed issue with external fast settling in RHD systems not properly triggering as a result of digital input activity
+
+* Version 3.0.5, 3 February 2022
+- Removed unused Context Help buttons from dialogs.
+- Reduced latency of spike .dat file writing so that these files are updated as soon as spikes are detected.
+- Added option to start software without OpenCL.
+- Improved TCP parsing to handle unexpected whitespace in a string of commands.
+- Added WriteToDiskLatency setting for users to control.
+- Added CreateNewDirectory setting for users to control.
+- Fixed displaying 'save to disk' icon for enabled non-amplifier signals (e.g., aux in, digital in, analog in).
+- Fixed small memory leak during TCP data streaming.
+- Altered 'Rescan Ports' behavior so that if the system went from no headstages to at least one detected, the displayed port will update to the present chip(s).
+- Added drag'n'drop option for various settings files.
+- Added more descriptive error messages when a Probe Map file is loaded as a general settings file.
+- Fixed bug that would only flag channels as spike-TCP enabled if they were also waveform-TCP enabled.
+- Removed unusable 'aux in wideband' checkbox hidden for RHS systems, because they don't have aux in channels.
+- Added more descriptive error/warning messages when channels loaded from XML file are inconsistent with those currently plugged in.
+- Fixed bug where loading data for playback that had aux inputs saved in wideband file wouldn't parse correctly.
+- Fixed bug with external fast settling not properly triggering as a result of digital input activity.
+
+* Version 3.0.6, 1 April 2022
+- Fixed bug with FilePerChannel digital ins/outs not being indexed correctly.
+- Increase max number of columns to 16.
+- Put waveform display in a scroll area so that when too many columns are present to be displayed at once, a scroll bar can be used.
+
+* Version 3.1.0, 3 June 2022
+- Fixed memory issue that caused systems with multiple RHD2216 chips to erroneously duplicate channels.
+- Added Plotting Mode options in the Performance menu, including a new High Efficiency mode that plots data more efficiently.
+- Allowed some elements (including window size, position, and control panel state) of the basic GUI appearance to automatically load/save through QSettings.
+- Added current channel name to the Window Title of the Spike Scope, ISI, PSTH, and Spectrogram tools.
+- Added current loaded filename to the Window Title of the Probe Map tool.
+
+* Version 3.2.0, 6 March 2023
+- Allow user to specify which port(s) to read data from in Advanced dialog
+- For One File Per Channel file format, when playing back data as it's being written, allow for jumping to the end of data for near-real-time playback
+- Support for use of XEM7310 board in Intan controllers to replace XEM6010 and XEM6310
+- Allow user to specify use of median instead of average for reference calculations
+- Fix various issues with re-recorded playback data dropping data blocks at the end
+- Allow user to specify whether or not to use max # of channels possible in synth mode
+- Add "Get CurrentTimestamp" and "Get CurrentTimeSeconds" TCP commands
+- Improved error detection and reporting for TCP commands
+- Various improvements in RHX API including easier use of the API without Qt, and additional utility functions described in Rhythm and RhythmStim documentation.
+
+* Version 3.3.0, 23 August 2023
+- Improve TCP reception of commands to not duplicate slot connections
+- Add Chip Test Mode
+- Fix issue where for RHD chips, Rescan Ports would not run chip calibration
+- Fix 7310 bit files so that for RHS systems, using a sample rate other than default (30 kHz) will no longer cause the software to use the wrong sample rate.
+- Fix crashing when attempting to open a new file for recording fails, instead display an error message and stop acquisition.
+
+* Version 3.3.1, 5 December 2023
+- Add 10, 16, and 20 ms time scale options for Spike Scope
+- Fix intermittent Stim Parameters dialog initialization issue that could cause incorrect values to appear
+- Append date/timestamp to end of LiveNotes filename to avoid unintentional file overwriting for multi-file recording sessions
+- Improve TCP functionality to allow for multiple connections/disconnections to occur without having to restart software
+- Add TCP "execute" commands: SaveSettingsFile, LoadSettingsFile, SaveStimulationSettingsFile, LoadStimulationSettingsFile, analogous to already present UI elements.
+- Improve test mode: wider acceptable input signal ranges, reduced likelihood of unintentionally entering test mode, and faster chip testing
+
+* Version 3.3.2, 8 July 2024
+- Improve chip testing mode, and give a more direct warning against using chip test mode for headstages
+- Flush livenotes file every time a livenote occurs (useful for real-time applications that rely on livenotes)
+- Fix XML loading of Port-specific parameters (manual delay, auxiliary digital out assignment) failing after Port A
+- Fix intermittent crashing that would occur from hovering cursor in tooltip mode over border between signal types in plot
+
+* Version 3.4.0, 4 February 2025
+- Comprehensive codebase overhaul from Qt 5 to Qt 6
+- Fix Spike Output TCP GUI unresponsiveness
+- Add OpenCL setting to saved settings, allowing OpenCL to remain disabled between sessions if specified by user
+- Small adjustments to preserve readability with Qt 6 GUI display
+- Fix bug that could cause incorrect fast settle behavior during stimulation pulse trains
+- Fix bug that could, under rare conditions, cause software to enter test mode upon startup
