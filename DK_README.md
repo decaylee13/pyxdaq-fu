@@ -11,6 +11,9 @@
 # Running the PONG game
 - python pong_game.py --mode rhx --threshold 0.5 --smooth-windows 1
 
+# Selecting the channels 
+- python channel_selector.py 
+
 # Latency report figures
 - source .venv/bin/activate
 - python scripts/plot_latency_report.py

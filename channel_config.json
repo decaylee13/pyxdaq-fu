@@ -2,7 +2,8 @@
   "total_channels": 32,
   "grid_rows": 8,
   "grid_cols": 4,
-  "up_channels": [
+  "up_channels": [],
+  "down_channels": [
     0,
     1,
     2,
@@ -18,9 +19,7 @@
     12,
     13,
     14,
-    15
-  ],
-  "down_channels": [
+    15,
     16,
     17,
     18,
