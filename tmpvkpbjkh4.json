@@ -3,7 +3,6 @@
   "grid_rows": 8,
   "grid_cols": 4,
   "up_channels": [
-    0,
     1,
     2,
     4,
@@ -23,7 +22,6 @@
     19
   ],
   "recording_channels": [
-    0,
     1,
     2,
     4,
@@ -47,6 +45,7 @@
     31
   ],
   "disabled_channels": [
+    0,
     3,
     8,
     10,
