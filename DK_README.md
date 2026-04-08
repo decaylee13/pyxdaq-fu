@@ -1,3 +1,11 @@
+## Demo steps: 
+# 1. Run the XDAQ-RHX.app
+# 2. python channel_selector.py: Configure the channels to stream (e.g. A-000, A-001, A-002, A-003) using the channel selector
+# 3. python live_decoder.py --verbose: verfiy the pipeline is receiving the spikes 
+# 4. python pong_game.py --mode rhx: play the pong game using the neural input
+# 5. python pong_game.py --mode rhx --threshold 2.0 --debug: can lower the threshold to see more spikes and debug prints
+
+
 # Command to running the software: 
 - open ./Intan-RHX-xdaq-v1.3.0/build/build/Release/XDAQ-RHX.app
 
