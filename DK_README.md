@@ -4,6 +4,8 @@
 # 3. python live_decoder.py --verbose: verfiy the pipeline is receiving the spikes 
 # 4. python pong_game.py --mode rhx: play the pong game using the neural input
 # 5. python pong_game.py --mode rhx --threshold 2.0 --debug: can lower the threshold to see more spikes and debug prints
+# 6. python pong_game.py --mode rhx --debug --no-stim: running without stimulus/feedback loop to verify the live input is working without the game loop
+
 
 
 # Command to running the software: 
@@ -11,7 +13,7 @@
 
 # RHX TCP Test program: 
 - python rhx_tcp_spike_client.py --channel A-000 --duration-s 60 --cleanup
-
+2
 # Pong Game 
 - Live neural input: python pong_game.py --mode rhx
 - Play against computer: python pong_game.py --mode keyboard

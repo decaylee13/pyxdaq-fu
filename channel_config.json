@@ -4,14 +4,6 @@
   "grid_cols": 4,
   "up_channels": [],
   "down_channels": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
     8,
     9,
     10,
@@ -38,14 +30,6 @@
     31
   ],
   "recording_channels": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
     8,
     9,
     10,
@@ -71,7 +55,16 @@
     30,
     31
   ],
-  "stim_channels": [],
+  "stim_channels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
   "disabled_channels": [],
   "num_channels_for_counter": 32
 }
